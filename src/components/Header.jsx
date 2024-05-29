@@ -13,8 +13,8 @@ function Header() {
 					<Nav className="me-auto">
 						<Nav.Link as={Link} to="/">Home</Nav.Link>
 						<Nav.Link as={Link} to="/location">Locations</Nav.Link>
-						<Nav.Link as={Link} to="/character/1">Character Detail</Nav.Link>
-						<Nav.Link as={Link} to="/charloc">Character in Loc</Nav.Link>
+						{/* <Nav.Link as={Link} to="/character/1">Character Detail</Nav.Link>
+						<Nav.Link as={Link} to="/charloc">Character in Loc</Nav.Link> */}
 					</Nav>
 				</Navbar.Collapse>
 			</Container>

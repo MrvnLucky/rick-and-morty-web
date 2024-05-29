@@ -4,6 +4,7 @@ import LocationCard from "../components/LocationCard";
 import Container from 'react-bootstrap/Container';
 import { useRecoilValue } from 'recoil';
 import { charactersState } from '../state';
+import { Link } from 'react-router-dom';
 
 function LocationList() {
 	const characters = useRecoilValue(charactersState);
@@ -24,7 +25,9 @@ function LocationList() {
 			<Row>
 				{uniqueLocations.map((location, index) => (
 					<Col key={index} sm={12} lg={4}>
-						<LocationCard location={location} />
+						<Link to={`/location/${location.name}`}>
+							<LocationCard location={location} />
+						</Link>
 					</Col>
 				))}
 			</Row>

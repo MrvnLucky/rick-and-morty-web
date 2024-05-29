@@ -6,7 +6,28 @@ import LocationList from "./pages/LocationList";
 import CharacterByLocation from "./pages/CharacterByLocation";
 import TestPage from "./pages/TestPage";
 
+import { GET_CHARACTERS } from './queries';
+import { useQuery } from "@apollo/client";
+import { useRecoilState } from "recoil";
+import { charactersState } from "./state";
+import { useEffect } from "react";
+
+
+
 function App() {
+	const [characters, setCharacters] = useRecoilState(charactersState);
+	const { loading, error, data } = useQuery(GET_CHARACTERS)
+
+
+	// if (data) setCharacters(data.characters.results);
+	useEffect(() => {
+		if (data) {
+			setCharacters(data.characters.results);
+		}
+	}, [data, setCharacters]);
+	if (loading) return <p>Loading...</p>;
+	if (error) return <p>Error :(</p>;
+
 	return (
 		<>
 			<Header />

@@ -1,13 +1,13 @@
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useRecoilState } from 'recoil';
 import { charactersState, selectedCharacterState } from '../state';
 import { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-
+import styles from './CharacterDetail.module.css'
 function CharacterDetail() {
 	const { id } = useParams();
 	const [character, setCharacter] = useRecoilState(selectedCharacterState);
@@ -50,39 +50,36 @@ function CharacterDetail() {
 		<>
 			<Container>
 				<Card
-					// className={styles.card}
-					style={{ flexDirection: "row" }}
+					className={styles.card}
+				// style={{ flexDirection: "row" }}
 				>
 					<Card.Img
 						src={character?.image || 'https://placehold.co/200'}
-						// className={styles.cardImg}
-						style={{ width: "360px", height: "360px" }}
+						className={styles.cardImg}
+					// style={{ width: "360px", height: "360px" }}
 					/>
 					<Card.Body>
 						<Card.Title>
-							{character?.name || "Character Name"} ({character?.gender || "GENDER"})
+							{character?.name || "Character Name"}
 						</Card.Title>
 						<Card.Text>
-							{character?.status || "Status"}
+							Status: {character?.status || "Status"}
 						</Card.Text>
 						<Card.Text>
-							Species:
+							Species: {character?.species || "Species"}
 						</Card.Text>
 						<Card.Text>
-							{character?.species || "Species"}
+							Gender: {character?.gender || "GENDER"}
 						</Card.Text>
+
 						<Card.Text>
-							First seen in episode:
+							First seen in: #{character?.episode[0].id || "?"} {character?.episode[0].name || "Episode Name"}
 						</Card.Text>
+
 						<Card.Text>
-							#{character?.episode[0].id || "?"} {character?.episode[0].name || "Episode Name"}
+							Location: {character?.location?.name || "-"}
 						</Card.Text>
-						<Card.Text>
-							Location:
-						</Card.Text>
-						<Card.Text>
-							{character?.location?.name || "Location Name"}
-						</Card.Text>
+
 						<Button onClick={() => setShowModal(true)}>
 							Assign New Location
 						</Button>
@@ -110,7 +107,9 @@ function CharacterDetail() {
 						</Modal>
 					</Card.Body>
 				</Card>
-				<p>Back to Character List</p>
+				<Link to={`/`}>
+					<p>Back to Character List</p>
+				</Link>
 			</Container>
 		</>
 	)

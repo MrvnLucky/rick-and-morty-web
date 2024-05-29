@@ -10,18 +10,8 @@ import { charactersState } from '../state';
 import { Link } from 'react-router-dom';
 function CharacterList() {
 	const [characters, setCharacters] = useRecoilState(charactersState);
-	const { loading, error, data } = useQuery(GET_CHARACTERS, {
-	})
 
 	console.log(characters)
-	useEffect(() => {
-		if (data) {
-			setCharacters(data.characters.results);
-		}
-	}, [data]);
-
-	if (loading) return <p>Loading...</p>;
-	if (error) return <p>Error :(</p>;
 
 	return (
 
