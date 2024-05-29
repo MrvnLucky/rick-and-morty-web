@@ -1,0 +1,20 @@
+.card {
+	display: flex;
+	flex-direction: row;
+}
+
+.cardImg {
+	width: 192px;
+	height: 192px;
+}
+
+@media (max-width: 768px) {
+	.card {
+		flex-direction: column;
+	}
+
+	.cardImg {
+		width: 100%;
+		height: auto;
+	}
+}
