@@ -4,8 +4,8 @@
 }
 
 .cardImg {
-	width: 192px;
-	height: 192px;
+	width: 320px;
+	height: 320px;
 }
 
 @media (max-width: 768px) {
