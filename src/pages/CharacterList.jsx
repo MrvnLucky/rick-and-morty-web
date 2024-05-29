@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 function CharacterList() {
 	const [characters, setCharacters] = useRecoilState(charactersState);
 	const { loading, error, data } = useQuery(GET_CHARACTERS, {
-		skip: characters !== null,
 	})
 
 	console.log(characters)

@@ -14,7 +14,7 @@ function App() {
 				<Route path="/" element={<CharacterList />} />
 				<Route path="/location" element={<LocationList />} />
 				<Route path="/character/:id" element={<CharacterDetail />} />
-				<Route path="/charloc" element={<CharacterByLocation />} />
+				<Route path="/location/:name" element={<CharacterByLocation />} />
 				<Route path="/test" element={<TestPage />} />
 			</Routes>
 		</>
